@@ -1,6 +1,8 @@
-package assignment4;
+package assignment5;
 
 import java.util.*;
+
+import javafx.scene.paint.Color;
 /**
  * 
  * @author Jonathan
@@ -10,7 +12,7 @@ import java.util.*;
  * Only walks in 4 directions
  */
 public class Critter1 extends Critter.TestCritter {
-
+	public String stats;
 	@Override
 	public void doTimeStep() {
 		int walkdir = Critter.getRandomInt(4);
@@ -34,17 +36,28 @@ public class Critter1 extends Critter.TestCritter {
 	 * Gives a list of the Critter1s, each respective x,y coordinates and energy.
 	 * Note that in order to use the Critter.TestCritter functions this classes extends it.
 	 * @param critters
+	 * @return 
 	 */
-	public static void runStats(java.util.List<Critter> critters) {
+	public String runStats(java.util.List<Critter> critters) {
 	
-		System.out.print("" + critters.size() + " total Critter1s    ");
+		String s = ("" + critters.size() + " total Critter1s    ");
 		for (Critter obj : critters) {
-			System.out.println();
 			Critter1 c = (Critter1) obj;
-			System.out.println("x coord: "+c.getX_coord() + "   y coord: " + c.getY_coord() + "   energy: " + c.getEnergy());
+			s += ("\nx coord: "+c.getX_coord() + "   y coord: " + c.getY_coord() + "   energy: " + c.getEnergy());
 
 		}
+		return s;
 		
+	}
+
+	@Override
+	public CritterShape viewShape() {
+		// TODO Auto-generated method stub
+		return CritterShape.STAR;
+	}
+	
+	public javafx.scene.paint.Color viewOutlineColor(){
+		return Color.RED;
 	}
 }
 
